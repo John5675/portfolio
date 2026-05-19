@@ -37,7 +37,7 @@ export default function Hero() {
           </motion.h1>
           <motion.p className="t-body lede" variants={rise}>
             Backend services, internal tooling, and the observability that keeps them honest.
-            Currently: full-stack + IoT platform work at <b>ResMed</b>. Math–CS,{' '}
+            Currently: full-stack + IoT platform work at <b>Resmed</b>. Math–CS,{' '}
             <b>UC San Diego '26</b>.
           </motion.p>
           <motion.div

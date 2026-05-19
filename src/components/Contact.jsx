@@ -42,8 +42,7 @@ export default function Contact() {
           Let's build something useful.
         </motion.h2>
         <motion.p variants={rise} className="t-body lede">
-          I reply within ~24 hours. Happy to nerd out about pipelines, debugging stories, or the
-          right amount of YAML.
+          I reply within ~24 hours.
         </motion.p>
 
         <motion.div variants={rise} className="row-3" style={{ marginTop: 'var(--s-2)' }}>

@@ -5,7 +5,7 @@ import './Experience.css';
 const TIMELINE = [
   {
     year: '2025 — present',
-    title: 'ResMed · SWE Intern',
+    title: 'Resmed · SWE Intern',
     sub: 'Metrics platform, IoT observability, deployments.',
     now: true,
   },
@@ -36,7 +36,7 @@ export default function Experience() {
               <div>
                 <h3 className="t-h2 role">Software Engineering Intern</h3>
                 <div className="org">
-                  <span><b>ResMed</b></span>
+                  <span><b>Resmed</b></span>
                   <span className="sep">·</span>
                   <span>San Diego, CA</span>
                   <span className="sep">·</span>
@@ -52,7 +52,7 @@ export default function Experience() {
 
           <div className="exp-body">
             <p className="t-body exp-blurb">
-              Full-stack and platform work supporting ResMed's connected device fleet — building
+              Full-stack and platform work supporting Resmed's connected device fleet — building
               internal tooling, hardening observability, and untangling deployment infrastructure
               that other engineers depend on every day.
             </p>
