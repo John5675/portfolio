@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import Icon from './Icon.jsx';
 import './Navbar.css';
 
+const resumeHref = `${import.meta.env.BASE_URL}John-Huynh-Resume.pdf`;
+
 const links = [
   { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },
@@ -52,12 +54,10 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#"
+            href={resumeHref}
             className="btn tiny ghost"
-            onClick={(e) => {
-              e.preventDefault();
-              setOpen(false);
-            }}
+            download
+            onClick={() => setOpen(false)}
           >
             Resume <Icon name="arrow-down" />
           </a>

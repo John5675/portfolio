@@ -19,7 +19,7 @@ export default function RecruiterCard() {
       <div className="rc-body">
         <div className="rc-row">
           <span className="k">Role</span>
-          <span className="v"><b>Software Engineer</b> — backend, platform, applied AI</span>
+          <span className="v"><b>Software Engineer</b> — backend, applied AI</span>
         </div>
         <div className="rc-row roles">
           <span className="k">Titles</span>

@@ -4,6 +4,8 @@ import RecruiterCard from './RecruiterCard.jsx';
 import PipelineStrip from './PipelineStrip.jsx';
 import './Hero.css';
 
+const resumeHref = `${import.meta.env.BASE_URL}John-Huynh-Resume.pdf`;
+
 const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
@@ -31,9 +33,9 @@ export default function Hero() {
             software engineer · backend · applied ai
           </motion.p>
           <motion.h1 className="t-display" variants={rise}>
-            I build the <span className="hl">quiet plumbing</span>
+            I build <span className="hl">reliable backend systems</span>
             <br />
-            behind reliable software.
+            and useful AI tools.
           </motion.h1>
           <motion.p className="t-body lede" variants={rise}>
             Backend services, internal tooling, and the observability that keeps them honest.
@@ -49,7 +51,7 @@ export default function Hero() {
               View Projects
               <span className="ico-trail"><Icon name="arrow" /></span>
             </a>
-            <a href="#" className="btn ghost" onClick={(e) => e.preventDefault()}>
+            <a href={resumeHref} className="btn ghost" download>
               Download Resume <Icon name="arrow-down" />
             </a>
           </motion.div>
