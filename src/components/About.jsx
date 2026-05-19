@@ -53,9 +53,9 @@ export default function About() {
 
       <div className="col-1-7 stack-4">
         <p className="t-body lede">
-          I'm a software engineer drawn to systems work — queues, retries, schemas, and the long
-          tail of <i>"wait, why did that fail at 3am?"</i> My favorite shipping moments are when a
-          manual workflow becomes a quiet cron job nobody has to think about again.
+          I'm a software engineer drawn to backend and systems work — building reliable services,
+          improving observability, and automating workflows so teams can move faster with less
+          operational overhead.
         </p>
         <p className="t-body lede">
           Lately I've been pairing that instinct with applied AI: small, focused agents that take
