@@ -5,12 +5,23 @@
   overflow: hidden;
   box-shadow: var(--shadow-4);
   position: relative;
+  transform-style: preserve-3d;
 }
 .recruiter::before {
   content: '';
   position: absolute; left: 0; right: 0; top: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent-3) 40%, var(--ink) 100%);
+}
+.rc-glow {
+  position: absolute;
+  right: -44px;
+  bottom: -52px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 120, 184, 0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .rc-head {
@@ -20,6 +31,8 @@
   display: flex; align-items: center; justify-content: space-between;
   font-family: var(--f-mono); font-size: 11px;
   letter-spacing: 0.14em; text-transform: uppercase;
+  position: relative;
+  z-index: 1;
 }
 .rc-head .status { display: inline-flex; align-items: center; gap: var(--s-2); }
 .rc-head .dot {
@@ -44,7 +57,12 @@
   .rc-head .dot::after { animation: none; }
 }
 
-.rc-body { display: flex; flex-direction: column; }
+.rc-body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
 .rc-row {
   display: grid;
   grid-template-columns: 88px 1fr;
@@ -70,6 +88,8 @@
   background: var(--surface-2);
   gap: var(--s-3);
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 .rc-foot .email {
   font-family: var(--f-mono); font-size: 12px; color: var(--ink-2);

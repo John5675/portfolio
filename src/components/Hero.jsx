@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Icon from './Icon.jsx';
 import RecruiterCard from './RecruiterCard.jsx';
 import PipelineStrip from './PipelineStrip.jsx';
@@ -16,11 +17,43 @@ const rise = {
 };
 
 export default function Hero() {
+  const sectionRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 18]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -16]);
+  const pipelineY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 28]);
+
   return (
-    <section className="section hero-section" id="top">
+    <section ref={sectionRef} className="section hero-section" id="top">
       <div className="section-inner">
         <motion.div
+          className="hero-ambient"
+          aria-hidden="true"
+          initial={shouldReduceMotion ? false : { opacity: 0.42, scale: 0.94 }}
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  opacity: [0.42, 0.62, 0.5],
+                  scale: [0.94, 1.04, 0.98],
+                  x: [0, 18, -8, 0],
+                  y: [0, -10, 6, 0],
+                }
+          }
+          transition={{
+            duration: 13,
+            repeat: shouldReduceMotion ? 0 : Infinity,
+            repeatType: 'mirror',
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
           className="col-1-7 stack-5 hero-title-block"
+          style={{ y: titleY }}
           variants={stagger}
           initial="hidden"
           animate="show"
@@ -57,14 +90,15 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="col-8-5">
+        <motion.div className="col-8-5 hero-card-wrap" style={{ y: cardY }}>
           <RecruiterCard />
-        </div>
+        </motion.div>
 
         <motion.div
           className="col-1-12 hero-pipeline-wrap"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
+          style={{ y: pipelineY }}
+          initial={{ opacity: 0, scale: 0.985 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 0.84, 0.32, 1] }}
         >
           <PipelineStrip />

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
 import './Projects.css';
@@ -18,20 +18,51 @@ const cardVariants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 0.84, 0.32, 1] } },
 };
+const thumbVariants = {
+  hover: {
+    scale: 1.035,
+    y: -4,
+    transition: { duration: 0.35, ease: [0.16, 0.84, 0.32, 1] },
+  },
+};
+const labelVariants = {
+  hover: {
+    x: 6,
+    transition: { duration: 0.25, ease: [0.16, 0.84, 0.32, 1] },
+  },
+};
+const arrowVariants = {
+  hover: {
+    x: 4,
+    y: -4,
+    transition: { duration: 0.22, ease: [0.16, 0.84, 0.32, 1] },
+  },
+};
+const sheenVariants = {
+  hover: {
+    opacity: [0, 0.75, 0],
+    x: ['-40%', '220%'],
+    transition: { duration: 0.8, ease: [0.16, 0.84, 0.32, 1] },
+  },
+};
 
-function ProjectShell({ children, className = '', style }) {
+function ProjectShell({ children, className = '', style, reducedMotion }) {
   return (
     <motion.article
       className={`project ${className}`.trim()}
       style={style}
       variants={cardVariants}
+      whileHover={reducedMotion ? undefined : 'hover'}
     >
+      <motion.span className="project-sheen" aria-hidden="true" variants={sheenVariants} />
       {children}
     </motion.article>
   );
 }
 
 export default function Projects() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <Section id="projects" alt tag="04 · projects">
       <div className="sec-head">
@@ -58,16 +89,16 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.1 }}
       >
         {/* Habitizer — Android routine manager */}
-        <ProjectShell className="project--habitizer">
+        <ProjectShell className="project--habitizer" reducedMotion={shouldReduceMotion}>
           <div className="thumb">
-            <div className="cover cover-habitizer">
+            <motion.div className="project-visual cover cover-habitizer" variants={thumbVariants}>
               <div className="grid">
                 {HABITIZER_CELLS.map((c, i) => (
                   <span key={i} className={`cell${c ? ' ' + c : ''}`} />
                 ))}
               </div>
-              <span className="cv-label">routine grid</span>
-            </div>
+              <motion.span className="cv-label" variants={labelVariants}>routine grid</motion.span>
+            </motion.div>
           </div>
           <div className="body">
             <div className="meta-row">
@@ -78,7 +109,7 @@ export default function Projects() {
               <span className="status-pill shipped">shipped</span>
             </div>
             <div className="name">
-              Habitizer <span className="project-arrow">↗</span>
+              Habitizer <motion.span className="project-arrow" variants={arrowVariants}>↗</motion.span>
             </div>
             <p className="desc">
               Android routine-manager built with dynamic task lists, integrated timers, and an
@@ -104,9 +135,9 @@ export default function Projects() {
         </ProjectShell>
 
         {/* Anime Rating Predictor — ML / data analysis */}
-        <ProjectShell className="project--liftlab">
+        <ProjectShell className="project--liftlab" reducedMotion={shouldReduceMotion}>
           <div className="thumb">
-            <div className="cover cover-analytics">
+            <motion.div className="project-visual cover cover-analytics" variants={thumbVariants}>
               <svg
                 viewBox="0 0 160 150"
                 preserveAspectRatio="xMidYMid meet"
@@ -156,8 +187,8 @@ export default function Projects() {
                   R² · 0.74
                 </text>
               </svg>
-              <span className="cv-label">rating predictor</span>
-            </div>
+              <motion.span className="cv-label" variants={labelVariants}>rating predictor</motion.span>
+            </motion.div>
           </div>
           <div className="body">
             <div className="meta-row">
@@ -168,7 +199,7 @@ export default function Projects() {
               <span className="status-pill shipped">shipped</span>
             </div>
             <div className="name">
-              Anime Rating Predictor <span className="project-arrow">↗</span>
+              Anime Rating Predictor <motion.span className="project-arrow" variants={arrowVariants}>↗</motion.span>
             </div>
             <p className="desc">
               RandomForestRegressor over anime metadata — R² 0.74 after RandomizedSearchCV tuning
@@ -193,9 +224,9 @@ export default function Projects() {
         </ProjectShell>
 
         {/* Data Compressor — Huffman coding in C++ */}
-        <ProjectShell className="project--csn">
+        <ProjectShell className="project--csn" reducedMotion={shouldReduceMotion}>
           <div className="thumb">
-            <div className="cover cover-compressor">
+            <motion.div className="project-visual cover cover-compressor" variants={thumbVariants}>
               <svg
                 viewBox="0 0 160 150"
                 preserveAspectRatio="xMidYMid meet"
@@ -233,8 +264,8 @@ export default function Projects() {
                 <circle cx="90" cy="120" r="4" fill="#0f1419" />
                 <circle cx="130" cy="120" r="4" fill="#0f1419" />
               </svg>
-              <span className="cv-label">huffman tree</span>
-            </div>
+              <motion.span className="cv-label" variants={labelVariants}>huffman tree</motion.span>
+            </motion.div>
           </div>
           <div className="body">
             <div className="meta-row">
@@ -245,7 +276,7 @@ export default function Projects() {
               <span className="status-pill shipped">shipped</span>
             </div>
             <div className="name">
-              Data Compressor <span className="project-arrow">↗</span>
+              Data Compressor <motion.span className="project-arrow" variants={arrowVariants}>↗</motion.span>
             </div>
             <p className="desc">
               C++ file compressor using Huffman coding — up to 30% smaller with custom
@@ -269,8 +300,8 @@ export default function Projects() {
         </ProjectShell>
 
         {/* ReleaseOps Backend — wide WIP card */}
-        <ProjectShell className="project--wip">
-          <div className="thumb cover-wip wip-thumb">
+        <ProjectShell className="project--wip" reducedMotion={shouldReduceMotion}>
+          <motion.div className="thumb project-visual cover-wip wip-thumb" variants={thumbVariants}>
             <svg
               viewBox="0 0 280 140"
               preserveAspectRatio="xMidYMid meet"
@@ -311,8 +342,8 @@ export default function Projects() {
                 <text x="200" y="65">GATE</text>
               </g>
             </svg>
-            <span className="cv-label">in progress</span>
-          </div>
+            <motion.span className="cv-label" variants={labelVariants}>in progress</motion.span>
+          </motion.div>
           <div className="body wip-body">
             <div className="meta-row">
               <span className="num">
@@ -324,7 +355,7 @@ export default function Projects() {
             <div className="name wip-name">
               ReleaseOps Backend
               <span className="t-mono muted wip-tag">[WIP]</span>
-              <span className="project-arrow">↗</span>
+              <motion.span className="project-arrow" variants={arrowVariants}>↗</motion.span>
             </div>
             <p className="desc wip-desc">
               A Spring Boot release-management service tracking services, releases, readiness

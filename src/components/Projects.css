@@ -16,6 +16,16 @@
   cursor: pointer;
   position: relative;
 }
+.project-sheen {
+  position: absolute;
+  inset: -20% auto -20% -12%;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+}
 .project:hover {
   border-color: var(--ink-3);
   transform: translateY(-3px);
@@ -27,6 +37,12 @@
   border-bottom: 1px solid var(--line-2);
   position: relative;
   overflow: hidden;
+}
+.project-visual {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  will-change: transform;
 }
 .project .body {
   padding: var(--s-4);
