@@ -45,7 +45,7 @@ export default function About() {
       <div className="sec-head">
         <div>
           <p className="eyebrow">About + principles</p>
-          <h2 className="t-h1">The unglamorous parts are the&nbsp;interesting parts.</h2>
+          <h2 className="t-h1">I like building the systems behind the product.</h2>
         </div>
         <div className="rule" />
         <span className="t-mono muted">02 / 06</span>
