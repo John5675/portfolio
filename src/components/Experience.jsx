@@ -6,7 +6,7 @@ const TIMELINE = [
   {
     year: '2025 — present',
     title: 'Resmed · SWE Intern',
-    sub: 'Metrics platform, IoT observability, deployments.',
+    sub: 'IoT team, observability, deployments.',
     now: true,
   },
   {
@@ -40,7 +40,7 @@ export default function Experience() {
                   <span className="sep">·</span>
                   <span>San Diego, CA</span>
                   <span className="sep">·</span>
-                  <span>IoT platform</span>
+                  <span>IoT team</span>
                 </div>
               </div>
               <span className="date-tag">
@@ -52,9 +52,9 @@ export default function Experience() {
 
           <div className="exp-body">
             <p className="t-body exp-blurb">
-              Full-stack and platform work supporting Resmed's connected device fleet — building
-              internal tooling, hardening observability, and untangling deployment infrastructure
-              that other engineers depend on every day.
+              Full-stack work on Resmed's IoT team — building internal tooling, hardening
+              observability, and untangling deployment infrastructure that other engineers depend
+              on every day.
             </p>
 
             <div className="check-list">
