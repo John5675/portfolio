@@ -1,0 +1,85 @@
+.recruiter {
+  background: var(--surface);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-2);
+  overflow: hidden;
+  box-shadow: var(--shadow-4);
+  position: relative;
+}
+.recruiter::before {
+  content: '';
+  position: absolute; left: 0; right: 0; top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-3) 40%, var(--ink) 100%);
+}
+
+.rc-head {
+  background: var(--ink);
+  color: var(--surface);
+  padding: var(--s-3) var(--s-4);
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.rc-head .status { display: inline-flex; align-items: center; gap: var(--s-2); }
+.rc-head .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--ok);
+  position: relative;
+  box-shadow: 0 0 0 3px var(--ok-soft);
+}
+.rc-head .dot::after {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ok);
+  opacity: 0;
+  animation: rc-pulse 2.4s ease-out infinite;
+}
+@keyframes rc-pulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rc-head .dot::after { animation: none; }
+}
+
+.rc-body { display: flex; flex-direction: column; }
+.rc-row {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-5);
+  border-top: 1px solid var(--line-2);
+}
+.rc-row:first-child { border-top: none; }
+.rc-row .k {
+  font-family: var(--f-mono); font-size: 10px;
+  color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 500;
+}
+.rc-row .v { font-size: 14px; color: var(--ink); line-height: 1.5; }
+.rc-row .v b { font-weight: 600; }
+.rc-row.roles .v { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.rc-foot {
+  border-top: 1px solid var(--line-2);
+  padding: var(--s-3) var(--s-5);
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--surface-2);
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+.rc-foot .email {
+  font-family: var(--f-mono); font-size: 12px; color: var(--ink-2);
+  font-weight: 500;
+  display: inline-flex; align-items: center;
+}
+.rc-mail-ico {
+  width: 13px !important;
+  height: 13px !important;
+  vertical-align: -2px;
+  margin-right: 6px;
+  color: var(--ink-3);
+}

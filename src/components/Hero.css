@@ -1,0 +1,12 @@
+.hero-section {
+  padding-top: calc(var(--s-10) + var(--s-2));
+  padding-bottom: var(--s-9);
+}
+
+.hero-title-block { padding-right: var(--s-4); }
+.hero-pipeline-wrap { margin-top: var(--s-6); }
+
+@media (max-width: 900px) {
+  .hero-section { padding-top: var(--s-8); padding-bottom: var(--s-7); }
+  .hero-title-block { padding-right: 0; }
+}
