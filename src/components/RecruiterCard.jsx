@@ -24,10 +24,8 @@ export default function RecruiterCard() {
         <div className="rc-row roles">
           <span className="k">Titles</span>
           <span className="v">
-            <span className="chip">Backend Eng</span>
-            <span className="chip">Platform Eng</span>
-            <span className="chip">Infra · DevOps</span>
-            <span className="chip">AI Tooling</span>
+            <span className="chip">Backend</span>
+            <span className="chip">AI</span>
           </span>
         </div>
         <div className="rc-row">
